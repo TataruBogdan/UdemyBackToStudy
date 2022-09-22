@@ -14,11 +14,13 @@ public class Contact {
         return name;
     }
 
-    public String getPhoneNUmber() {
+    public String getPhoneNumber() {
         return phoneNUmber;
     }
 
     // we don't have to create a new object instance for this contact class.
+
+    //factory method
     public static Contact createContact(String name, String phoneNUmber){
         return new Contact(name, phoneNUmber);
     }
