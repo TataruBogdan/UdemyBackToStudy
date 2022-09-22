@@ -8,7 +8,7 @@ public class Main {
 
         Branch aBranch = new Branch("Some Branch");
 
-        bigBank.addBranch(aBranch);
+        bigBank.addNewBranch(aBranch);
         bigBank.getBankBranches();
 
     }
