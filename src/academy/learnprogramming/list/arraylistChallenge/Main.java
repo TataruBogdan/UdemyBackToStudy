@@ -3,6 +3,21 @@ package academy.learnprogramming.list.arraylistChallenge;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/*
+* create a program that implements a very simple mobile phone with the following capabilities.
+* The ability to store, to modify, to remove, and to query contact names.
+* The contact names are those records for people who have been added as a contact on the mobile phone.
+* create a separate class for contacts. actual fields we want would be name and phone number.
+* create a master class(MobilePhone) that holds the ArrayList of Contacts.
+* MobilePhone class itself has the functionality listed above.
+* add a menu of options that are available to quit, to print a list of contacts,
+* to add a new contact, update an existing contact,to remove a contact, and also the search / find a contact.
+* Be sure, when you're adding or updating, that you check if a contact already exists, by using the name.
+* be sure not to expose any of the inner workings of the ArrayList to any class that's accessing this.
+* no direct ints.  .get(i) in the ArrayList.
+* mobile phone class we're only dealing with contact objects only. */
+
+
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
@@ -18,7 +33,6 @@ public class Main {
             try {
                 System.out.println("Enter your choice: ");
                 choice = scanner.nextInt();
-
                 switch (choice) {
                     case 1:
                         quit = true;
@@ -42,6 +56,7 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.out.println("Wrong choice " + e.getMessage());
             }
+            scanner.nextLine();
         }
     }
 
