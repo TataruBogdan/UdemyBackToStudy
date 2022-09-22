@@ -20,7 +20,7 @@ public class Contact {
 
     // we don't have to create a new object instance for this contact class.
 
-    //factory method
+    //factory method as well.
     public static Contact createContact(String name, String phoneNUmber){
         return new Contact(name, phoneNUmber);
     }
