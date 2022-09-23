@@ -34,7 +34,7 @@ public class Bank {
     }
 
     // add a customer to that branch with initial transaction
-    public boolean addNewCustomer(String name, double transaction,String branch){
+    public boolean addNewCustomer(String name, double transaction, String branch){
         Branch foundBranch = findBranch(branch);
         // if branch exists
         if (foundBranch != null){
@@ -62,10 +62,12 @@ public class Bank {
         Branch foundBranch = findBranch(branch);
         if (foundBranch != null){
             Customer foundCustomer = foundBranch.getBranchCustomer(customer);
-            return foundCustomer.addTransaction(transaction);
-        }else {
+            if (foundCustomer != null){
+                return foundCustomer.addTransaction(transaction);
+            }
             return -1;
         }
+        return -1;
     }
 
     public boolean searchBranch(String name){
@@ -86,6 +88,7 @@ public class Bank {
         return null;
     }
 
+    //TODO - print the list of customers
 
 
 }

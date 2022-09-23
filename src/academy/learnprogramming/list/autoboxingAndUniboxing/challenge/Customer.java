@@ -9,7 +9,6 @@ public class Customer {
 
     private String name;
 
-    double initialAmount;
 
     private ArrayList<Double> transactions;
 
@@ -17,9 +16,8 @@ public class Customer {
     // Customer has an initial amount
     public Customer(String name, double initialAmount) {
         this.name = name;
-        this.initialAmount = initialAmount;
         this.transactions = new ArrayList<>();
-        this.transactions.add(initialAmount);
+        addTransaction(initialAmount);
     }
 
     public void getTransactions() {

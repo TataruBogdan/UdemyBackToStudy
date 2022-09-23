@@ -18,31 +18,32 @@ public class Branch {
         return name;
     }
 
-    // TODO - expose al brachCustomers ?
+    // TODO - expose al branchCustomers - Ok can do
     public ArrayList<Customer> getBranchCustomers() {
         return branchCustomers;
     }
 
     public boolean addCustomer(String customer, double initialAmount) {
-        return branchCustomers.add(new Customer(customer, initialAmount));
+        if (getBranchCustomer(customer) == null){
+            return branchCustomers.add(new Customer(customer, initialAmount));
+        }
+        return false;
     }
 
 
     //add additional transaction for that customer per branch
-    /*public boolean addTransaction(String customer, double transaction) {
+    public boolean addCustomerTransaction(String customer, double transaction) {
         Customer foundCustomer = getBranchCustomer(customer);
         if (foundCustomer == null) {
             System.out.println("Cannot find customer");
             return false;
         } else {
-            for (int i = 0; i < branchCustomers.size(); i++) {
-                branchCustomers.get(i).addTransaction(transaction);
-                return true;
-            }
+            foundCustomer.addTransaction(transaction);
         }
         return false;
-    }*/
+    }
 
+    //TODO - must be private
     public Customer getBranchCustomer(String name) {
         for (Customer customer : branchCustomers) {
             if (customer.getName().equals(name)) {

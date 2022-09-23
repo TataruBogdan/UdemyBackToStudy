@@ -14,7 +14,7 @@ public class Main {
         boolean addedCustomer = bigBank.addNewCustomer("Gigi", 100.00, "Some Branch");
         System.out.println(addedCustomer);
         Customer customer = aBranch.getBranchCustomer("Gigi");
-        System.out.println("Customer name " + customer.getName() + " initial amount " +  customer.initialAmount);
+        System.out.println("Customer name " + customer.getName() + " initial amount " ); //TODO -?? access initial amount?
         double anotherTransaction = bigBank.addTransaction("Gigi", 200.00, "Another Branch");
 
         if (anotherTransaction == -1){
