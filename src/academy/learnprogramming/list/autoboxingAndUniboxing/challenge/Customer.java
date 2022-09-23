@@ -9,23 +9,31 @@ public class Customer {
 
     private String name;
 
+    double initialAmount;
+
     private ArrayList<Double> transactions;
 
 
     // Customer has an initial amount
     public Customer(String name, double initialAmount) {
         this.name = name;
+        this.initialAmount = initialAmount;
         this.transactions = new ArrayList<>();
         this.transactions.add(initialAmount);
+    }
+
+    public void getTransactions() {
+        for (int i = 0; i < transactions.size(); i++) {
+            System.out.println("Transactions :" + transactions.get(i));
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<Double> getTransactions() {
-        return transactions;
-    }
+    // TODO - expose al transactions ?
+
 
     public double addTransaction(double transaction){
         if (transactions.add(transaction)){
@@ -33,4 +41,14 @@ public class Customer {
         }
         return -1;
     }
+
+
+
+    // create a Customer object at static level
+    /*
+    public Customer createCustomer(String name, double initialAmount){
+        return new Customer(name, initialAmount);
+    }*/
+
+
 }

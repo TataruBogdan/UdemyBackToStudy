@@ -22,9 +22,10 @@ public class Bank {
         }
     }
 
+
     public boolean addNewBranch(Branch branch){
-        boolean foundBranch = searchBranch(name);
-        if (foundBranch){
+        int foundBranch = bankBranch.indexOf(branch);
+        if (foundBranch != -1){
             System.out.println("Cannot add branch. Branch already exists");
             return false;
         }
@@ -33,16 +34,23 @@ public class Bank {
     }
 
     // add a customer to that branch with initial transaction
-    public boolean addCustomer(String newCustomer, double initialAmount, String branch){
+    public boolean addNewCustomer(String name, double transaction,String branch){
         Branch foundBranch = findBranch(branch);
+        // if branch exists
         if (foundBranch != null){
-            foundBranch.addCustomer(newCustomer, initialAmount);
-            return true;
+            //search to see if the customer exists
+            Customer foundCustomer = findCustomer(name, branch);
+            if (foundCustomer == null){
+                foundBranch.addCustomer(name, transaction);
+                return true;
+            }
+            System.out.println("Customer already exists");
+            return false;
         }
         return false;
     }
 
-    public Customer findCustomer(String customer, String branch){
+    private Customer findCustomer(String customer, String branch){
         Branch foundBranch = findBranch(branch);
         if (foundBranch != null){
             return foundBranch.getBranchCustomer(customer);
@@ -55,8 +63,9 @@ public class Bank {
         if (foundBranch != null){
             Customer foundCustomer = foundBranch.getBranchCustomer(customer);
             return foundCustomer.addTransaction(transaction);
+        }else {
+            return -1;
         }
-        return -1;
     }
 
     public boolean searchBranch(String name){
