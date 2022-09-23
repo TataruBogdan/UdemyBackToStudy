@@ -22,7 +22,7 @@ public class Customer {
 
     public void getTransactions() {
         for (int i = 0; i < transactions.size(); i++) {
-            System.out.println("Transactions :" + transactions.get(i));
+            System.out.println("Amount :" + transactions.get(i));
         }
     }
 

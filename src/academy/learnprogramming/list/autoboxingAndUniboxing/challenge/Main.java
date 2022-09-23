@@ -31,5 +31,6 @@ public class Main {
         customer.getTransactions();
 
         bigBank.getBankBranches();
+        bigBank.listCustomers("Some Branch", true);
     }
 }

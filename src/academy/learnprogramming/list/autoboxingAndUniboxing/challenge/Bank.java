@@ -89,6 +89,22 @@ public class Bank {
     }
 
     //TODO - print the list of customers
+    public boolean listCustomers(String branch, boolean showTransactions){
+        Branch foundBranch = findBranch(branch);
+        if (foundBranch != null){
+            System.out.println("Customer for branch " + foundBranch.getName());
+            ArrayList<Customer> branchCustomers = foundBranch.getBranchCustomers();
+            for (Customer customer : branchCustomers) {
+                System.out.println("Customer: " + customer.getName());
+                if (showTransactions){
+                    System.out.println("Transactions: ");
+                    customer.getTransactions();
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
 
 }
