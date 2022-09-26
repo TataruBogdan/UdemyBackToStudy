@@ -22,6 +22,7 @@ import java.util.Scanner;
  * what happened when we went back and forth from a city before we started tracking the direction.
  * optional extra, provide another menu option to remove the current song from the playlist.
  * hint : listIterator.remove() */
+
 public class Main {
 
     public static void main(String[] args) {
@@ -66,14 +67,13 @@ public class Main {
 
     private static void playMenu(LinkedList<Song> playlist) {
 
+        ListIterator<Song> listIterator = playlist.listIterator();
 
         Scanner scanner = new Scanner(System.in);
 
         boolean quit = false;
 
         boolean goingForward = true;
-
-        ListIterator<Song> listIterator = playlist.listIterator();
 
         if (playlist.isEmpty()) {
             System.out.println("There are no songs to pe played");
@@ -102,6 +102,7 @@ public class Main {
                         System.out.println("Now playing " + listIterator.next().getTitle());
                     } else {
                         System.out.println("We reached the and of the playlist");
+                        goingForward = false;
                     }
                     break;
                 case 2:
@@ -115,17 +116,29 @@ public class Main {
                     if (listIterator.hasPrevious()) {
                         System.out.println("Now playing " + listIterator.previous().getTitle());
                     } else {
-                        System.out.println("We are at the start o the list");
+                        System.out.println("We are at the start o the playlist");
+                        goingForward = true;
                     }
                     break;
                 case 3:
                     System.out.println("Replay the current song");
-
-                    if (listIterator.hasPrevious()) {
-                        System.out.println("Now playing" + listIterator.previous().getTitle());
+                    if (goingForward){
+                        if (listIterator.hasPrevious()) {
+                            System.out.println("Now replaying" + listIterator.previous().getTitle());
+                            goingForward = false;
+                        } else {
+                            System.out.println("We are at the start");
+                        }
                     } else {
-                        System.out.println("We are at the start");
+                        if (listIterator.hasNext()){
+                            System.out.println("Now replaying" + listIterator.next().getTitle());
+                            goingForward = true;
+                        } else {
+                            System.out.println("We reached the and of the playlist");
+                            goingForward = false;
+                        }
                     }
+
                     break;
                 case 4:
                     System.out.println("list the songs in the playlist");

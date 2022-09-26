@@ -18,4 +18,7 @@ public class Song {
     public double getDuration() {
         return this.duration;
     }
+
+    // toString - Override !
+
 }
