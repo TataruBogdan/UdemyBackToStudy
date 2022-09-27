@@ -23,6 +23,10 @@ import java.util.Scanner;
  * optional extra, provide another menu option to remove the current song from the playlist.
  * hint : listIterator.remove() */
 
+
+/*each time you delete a record, you then have to do a dot next or a dot previous
+ * to avoid getting an error if you try and do it again.*/
+
 public class Main {
 
     public static void main(String[] args) {
@@ -144,6 +148,16 @@ public class Main {
                     System.out.println("list the songs in the playlist");
                     printList(playlist);
                     break;
+                case 5:
+                    if (playlist.size() > 0){
+                        listIterator.remove();
+                        if (listIterator.hasNext()){
+                            System.out.println("Now playing " + listIterator.next());
+                        } else {
+                            System.out.println("Now playing " +listIterator.previous());
+                        }
+                    }
+                    break;
             }
         }
     }
@@ -179,6 +193,7 @@ public class Main {
                 "1 - go to next song\n" +
                 "2 - go to previous song\n" +
                 "3 - replay song\n" +
-                "4 - list all songs");
+                "4 - list all songs\n" +
+                "5 - remove current song");
     }
 }
